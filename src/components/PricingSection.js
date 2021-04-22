@@ -1,7 +1,7 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
-import SectionHeader from "components/SectionHeader";
+import SectionHeader from "./SectionHeader";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,8 +13,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import CheckIcon from "@material-ui/icons/Check";
 import ListItemText from "@material-ui/core/ListItemText";
 import Button from "@material-ui/core/Button";
-import Link from "next/link";
-import { useAuth } from "util/auth.js";
+import { Link } from "./../util/router.js";
+import { useAuth } from "./../util/auth.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -144,24 +144,20 @@ function PricingSection(props) {
                   )}
 
                   <Box mt="auto" pt={3}>
-                    <Link
-                      href={
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      size="large"
+                      fullWidth={true}
+                      component={Link}
+                      to={
                         auth.user
                           ? `/purchase/${item.id}`
                           : `/auth/signup?next=/purchase/${item.id}`
                       }
-                      passHref={true}
                     >
-                      <Button
-                        component="a"
-                        variant="contained"
-                        color="primary"
-                        size="large"
-                        fullWidth={true}
-                      >
-                        Choose
-                      </Button>
-                    </Link>
+                      Choose
+                    </Button>
                   </Box>
                 </CardContent>
               </Card>

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import AppBar from "@material-ui/core/AppBar";
 import Container from "@material-ui/core/Container";
 import Toolbar from "@material-ui/core/Toolbar";
-import Link from "next/link";
+import { Link } from "./../util/router.js";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -18,8 +18,8 @@ import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useAuth } from "util/auth.js";
-import useDarkMode from "use-dark-mode";
+import { useAuth } from "./../util/auth.js";
+import { useDarkMode } from "./../util/theme.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,12 +63,9 @@ function Navbar(props) {
       <AppBar position="static" color="transparent" elevation={0}>
         <Container disableGutters={true}>
           <Toolbar>
-            <Link href="/">
-              <a>
-                <img src={logo} alt="Logo" className={classes.logo} />
-              </a>
+            <Link to="/">
+              <img src={logo} alt="Logo" className={classes.logo} />
             </Link>
-
             <div className={classes.spacer} />
             <Hidden smUp={true} implementation="css">
               <IconButton
@@ -82,11 +79,9 @@ function Navbar(props) {
             </Hidden>
             <Hidden xsDown={true} implementation="css">
               {!auth.user && (
-                <Link href="/auth/signin" passHref={true}>
-                  <Button color="inherit" component="a">
-                    Sign in
-                  </Button>
-                </Link>
+                <Button color="inherit" component={Link} to="/auth/signin">
+                  Sign in
+                </Button>
               )}
 
               {auth.user && (
@@ -124,24 +119,22 @@ function Navbar(props) {
                       horizontal: "center",
                     }}
                   >
-                    <div>
-                      <Link href="/dashboard" passHref={true}>
-                        <MenuItem component="a">Dashboard</MenuItem>
-                      </Link>
+                    <MenuItem component={Link} to="/dashboard">
+                      Dashboard
+                    </MenuItem>
 
-                      <Link href="/settings/general" passHref={true}>
-                        <MenuItem component="a">Settings</MenuItem>
-                      </Link>
+                    <MenuItem component={Link} to="/settings/general">
+                      Settings
+                    </MenuItem>
 
-                      <Divider />
-                      <MenuItem
-                        onClick={(event) => {
-                          auth.signout();
-                        }}
-                      >
-                        Signout
-                      </MenuItem>
-                    </div>
+                    <Divider />
+                    <MenuItem
+                      onClick={(event) => {
+                        auth.signout();
+                      }}
+                    >
+                      Signout
+                    </MenuItem>
                   </Menu>
                 </>
               )}
@@ -169,26 +162,20 @@ function Navbar(props) {
           onClick={() => setDrawerOpen(false)}
         >
           {!auth.user && (
-            <Link href="/auth/signin" passHref={true}>
-              <ListItem button={true} component="a">
-                <ListItemText>Sign in</ListItemText>
-              </ListItem>
-            </Link>
+            <ListItem button={true} component={Link} to="/auth/signin">
+              <ListItemText>Sign in</ListItemText>
+            </ListItem>
           )}
 
           {auth.user && (
             <>
-              <Link href="/dashboard" passHref={true}>
-                <ListItem button={true} component="a">
-                  <ListItemText>Dashboard</ListItemText>
-                </ListItem>
-              </Link>
+              <ListItem button={true} component={Link} to="/dashboard">
+                <ListItemText>Dashboard</ListItemText>
+              </ListItem>
 
-              <Link href="/settings/general" passHref={true}>
-                <ListItem button={true} component="a">
-                  <ListItemText>Settings</ListItemText>
-                </ListItem>
-              </Link>
+              <ListItem button={true} component={Link} to="/settings/general">
+                <ListItemText>Settings</ListItemText>
+              </ListItem>
 
               <Divider />
               <ListItem

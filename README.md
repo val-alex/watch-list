@@ -9,22 +9,29 @@ Update your `.env` file with values for each environment variable
 API_KEY=AIzaSyBkkFF0XhNZeWuDmOfEhsgdfX1VBG7WTas
 etc ...
 ```
-Run the development server
+
+Install the Vercel CLI
 ```
-npm run dev
+npm install -g vercel
 ```
-When the above command completes you'll be able to view your website at `http://localhost:3000`
+Link codebase to a Vercel project and run development server
+```
+vercel dev
+```
+When the above command completes you'll be able to view your website at `http://localhost:3000`.
+
+_Note: You can run just the front-end with `npm run start`, but `vercel dev` also handles running your API endpoints (located in the `/api` directory)._
 
 ## 🥞 Stack
 This project uses the following libraries and services:
-- Framework - [Next.js](https://nextjs.org)
+- Framework - [Create React App](https://create-react-app.dev) with React Router
 - UI Kit - [Material UI](https://material-ui.com)
 - Authentication - [Firebase Auth](https://firebase.google.com/products/auth)
 - Database - [Cloud Firestore](https://firebase.google.com/products/firestore)
 - Payments - [Stripe](https://stripe.com)
 - Newsletter - [Mailchimp](https://mailchimp.com)
 - Contact Form - [Formspree](https://formspree.io)
-- Analytics - [Simple Analytics](https://simpleanalytics.com/?referral=divjoy)
+- Analytics - [Google Analytics](https://googleanalytics.com)
 - Hosting - [Vercel](https://vercel.com)
 
 
@@ -35,13 +42,12 @@ This project uses the following libraries and services:
 <details>
 <summary><b>Routing</b></summary>
 <p>
-  This project uses the built-in Next.js router and its convenient <code>useRouter</code> hook. Learn more in the <a target="_blank" href="https://github.com/zeit/next.js/#routing">Next.js docs</a>.
+  This project uses <a target="_blank" href="https://reacttraining.com/react-router/web/guides/quick-start">React Router</a> and includes a convenient <code>useRouter</code> hook (located in <code><a href="src/util/router.js">src/util/router.js</a></code>) that wraps React Router and gives all the route methods and data you need.
 
 ```js
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { Link, useRouter } from "./../util/router.js";
 
-function MyComponent(){
+function MyComponent() {
   // Get the router object
   const router = useRouter();
 
@@ -49,13 +55,13 @@ function MyComponent(){
   console.log(router.query.postId);
 
   // Get current pathname
-  console.log(router.pathname)
+  console.log(router.pathname);
 
   // Navigate with the <Link> component or with router.push()
   return (
     <div>
-      <Link href="/about"><a>About</a></Link>
-      <button onClick={(e) => router.push('/about')}>About</button>
+      <Link to="/about">About</Link>
+      <button onClick={(e) => router.push("/about")}>About</button>
     </div>
   );
 }
@@ -69,9 +75,9 @@ function MyComponent(){
   This project uses <a href="https://firebase.google.com">Firebase Auth</a> and includes a convenient <code>useAuth</code> hook (located in <code><a href="src/util/auth.js">src/util/auth.js</a></code>) that wraps Firebase and gives you common authentication methods. Depending on your needs you may want to edit this file and expose more Firebase functionality.
 
 ```js
-import { useAuth } from './../util/auth.js';
+import { useAuth } from "./../util/auth.js";
 
-function MyComponent(){
+function MyComponent() {
   // Get the auth object in any component
   const auth = useAuth();
 
@@ -82,7 +88,7 @@ function MyComponent(){
       {auth.user ? (
         <button onClick={(e) => auth.signout()}>Signout</button>
       ) : (
-        <button onClick={(e) => auth.signin('hello@divjoy.com', 'yolo')}>Signin</button>
+        <button onClick={(e) => auth.signin("hello@divjoy.com", "yolo")}>Signin</button>
       )}
     </div>
   );
@@ -105,7 +111,7 @@ function ItemsPage(){
   const auth = useAuth();
 
   // Fetch items by owner
-  // Returned status value will be "idle" if we're waiting on 
+  // Returned status value will be "idle" if we're waiting on
   // the uid value or "loading" if the query is executing.
   const uid = auth.user ? auth.user.uid : undefined;
   const { data: items, status } = useItemsByOwner(uid);
@@ -133,12 +139,8 @@ Install the Vercel CLI
 ```
 npm install -g vercel
 ```
-Link codebase to a Vercel project
 
-```
-vercel link
-```
-Add each variable from your `.env` file to your Vercel project, including the ones prefixed with "NEXT_PUBLIC_". You'll be prompted to enter its value and choose one or more environments (development, preview, or production). See <a target="_blank" href="https://vercel.com/docs/environment-variables">Vercel Environment Variables</a> to learn more about how this works, how to update values through the Vercel UI, and how to use secrets for extra security.
+Add each variable from your `.env` file to your Vercel project, including the ones prefixed with "REACT_APP\_". You'll be prompted to enter its value and choose one or more environments (development, preview, or production). See <a target="_blank" href="https://vercel.com/docs/environment-variables">Vercel Environment Variables</a> to learn more about how this works, how to update values through the Vercel UI, and how to use secrets for extra security.
 
 ```
 vercel env add plain VARIABLE_NAME

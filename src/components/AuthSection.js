@@ -1,8 +1,8 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
-import SectionHeader from "components/SectionHeader";
-import Auth from "components/Auth";
+import SectionHeader from "./SectionHeader";
+import Auth from "./Auth";
 
 function AuthSection(props) {
   // Values for each auth type

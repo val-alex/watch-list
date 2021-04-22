@@ -14,9 +14,9 @@ import IconButton from "@material-ui/core/IconButton";
 import StarIcon from "@material-ui/icons/Star";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import EditItemModal from "components/EditItemModal";
-import { useAuth } from "util/auth.js";
-import { updateItem, deleteItem, useItemsByOwner } from "util/db.js";
+import EditItemModal from "./EditItemModal";
+import { useAuth } from "./../util/auth.js";
+import { updateItem, deleteItem, useItemsByOwner } from "./../util/db.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -76,9 +76,7 @@ function DashboardItems(props) {
           alignItems="center"
           padding={2}
         >
-          <Typography className={classes.text} variant="h5">
-            Items
-          </Typography>
+          <Typography variant="h5">Items</Typography>
           <Button
             variant="contained"
             size="medium"

@@ -1,6 +1,6 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
-import BackgroundImage from "components/BackgroundImage";
+import BackgroundImage from "./BackgroundImage";
 import { makeStyles } from "@material-ui/core/styles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";
 import capitalize from "@material-ui/core/utils/capitalize";

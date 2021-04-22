@@ -1,10 +1,10 @@
 import React from "react";
-import HeroSection from "components/HeroSection";
-import FeaturesSection from "components/FeaturesSection";
-import ClientsSection from "components/ClientsSection";
-import TestimonialsSection from "components/TestimonialsSection";
-import NewsletterSection from "components/NewsletterSection";
-import CtaSection from "components/CtaSection";
+import HeroSection from "./../components/HeroSection";
+import FeaturesSection from "./../components/FeaturesSection";
+import ClientsSection from "./../components/ClientsSection";
+import TestimonialsSection from "./../components/TestimonialsSection";
+import NewsletterSection from "./../components/NewsletterSection";
+import CtaSection from "./../components/CtaSection";
 
 function IndexPage(props) {
   return (

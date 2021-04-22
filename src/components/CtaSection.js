@@ -1,10 +1,10 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import SectionHeader from "components/SectionHeader";
+import SectionHeader from "./SectionHeader";
 import Button from "@material-ui/core/Button";
-import Link from "next/link";
+import { Link } from "./../util/router.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,15 +38,15 @@ function CtaSection(props) {
             />
           </Grid>
           <Grid item={true} xs={12} md="auto">
-            <Link href={props.buttonPath} passHref={true}>
-              <Button
-                variant="contained"
-                size="large"
-                color={props.buttonColor}
-              >
-                {props.buttonText}
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              size="large"
+              color={props.buttonColor}
+              component={Link}
+              to={props.buttonPath}
+            >
+              {props.buttonText}
+            </Button>
           </Grid>
         </Grid>
       </Container>

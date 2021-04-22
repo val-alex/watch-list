@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import contact from "util/contact.js";
+import contact from "./../util/contact.js";
 import { useForm } from "react-hook-form";
 
 function Contact(props) {

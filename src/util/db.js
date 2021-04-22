@@ -12,11 +12,6 @@ export function useUser(uid) {
   return useQuery(uid && firestore.collection("users").doc(uid));
 }
 
-// Update an existing user
-export function updateUser(uid, data) {
-  return firestore.collection("users").doc(uid).update(data);
-}
-
 // Create a new user
 export function createUser(uid, data) {
   return firestore
@@ -25,8 +20,18 @@ export function createUser(uid, data) {
     .set({ uid, ...data }, { merge: true });
 }
 
+// Update an existing user
+export function updateUser(uid, data) {
+  return firestore.collection("users").doc(uid).update(data);
+}
+
 /**** ITEMS ****/
 /* Example query functions (modify to your needs) */
+
+// Fetch item data (hook)
+export function useItem(id) {
+  return useQuery(id && firestore.collection("items").doc(id));
+}
 
 // Fetch all items by owner (hook)
 export function useItemsByOwner(owner) {
@@ -39,22 +44,17 @@ export function useItemsByOwner(owner) {
   );
 }
 
-// Fetch item data
-export function useItem(id) {
-  return useQuery(id && firestore.collection("items").doc(id));
-}
-
-// Update an item
-export function updateItem(id, data) {
-  return firestore.collection("items").doc(id).update(data);
-}
-
 // Create a new item
 export function createItem(data) {
   return firestore.collection("items").add({
     ...data,
     createdAt: serverTimestamp(),
   });
+}
+
+// Update an item
+export function updateItem(id, data) {
+  return firestore.collection("items").doc(id).update(data);
 }
 
 // Delete an item

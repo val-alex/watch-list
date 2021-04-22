@@ -1,7 +1,7 @@
 import React from "react";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import Link from "next/link";
+import { Link } from "./../util/router.js";
 
 function SettingsNav(props) {
   return (
@@ -11,17 +11,26 @@ function SettingsNav(props) {
       textColor="primary"
       centered={true}
     >
-      <Link href="/settings/general" value="general" passHref={true}>
-        <Tab label="General" component="a"></Tab>
-      </Link>
+      <Tab
+        label="General"
+        value="general"
+        component={Link}
+        to="/settings/general"
+      ></Tab>
 
-      <Link href="/settings/password" value="password" passHref={true}>
-        <Tab label="Password" component="a"></Tab>
-      </Link>
+      <Tab
+        label="Password"
+        value="password"
+        component={Link}
+        to="/settings/password"
+      ></Tab>
 
-      <Link href="/settings/billing" value="billing" passHref={true}>
-        <Tab label="Billing" component="a"></Tab>
-      </Link>
+      <Tab
+        label="Billing"
+        value="billing"
+        component={Link}
+        to="/settings/billing"
+      ></Tab>
     </Tabs>
   );
 }

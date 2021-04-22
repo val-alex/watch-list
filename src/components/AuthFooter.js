@@ -1,6 +1,6 @@
 import React from "react";
 import LinkMui from "@material-ui/core/Link";
-import Link from "next/link";
+import { Link } from "./../util/router.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,21 +22,21 @@ function AuthFooter(props) {
       {props.type === "signup" && (
         <>
           Have an account already?
-          <Link href="/auth/signin" passHref={true}>
-            <LinkMui>{props.typeValues.linkTextSignin}</LinkMui>
-          </Link>
+          <LinkMui component={Link} to="/auth/signin">
+            {props.typeValues.linkTextSignin}
+          </LinkMui>
         </>
       )}
 
       {props.type === "signin" && (
         <>
-          <Link href="/auth/signup" passHref={true}>
-            <LinkMui>{props.typeValues.linkTextSignup}</LinkMui>
-          </Link>
+          <LinkMui component={Link} to="/auth/signup">
+            {props.typeValues.linkTextSignup}
+          </LinkMui>
 
-          <Link href="/auth/forgotpass" passHref={true}>
-            <LinkMui>{props.typeValues.linkTextForgotpass}</LinkMui>
-          </Link>
+          <LinkMui component={Link} to="/auth/forgotpass">
+            {props.typeValues.linkTextForgotpass}
+          </LinkMui>
         </>
       )}
     </div>

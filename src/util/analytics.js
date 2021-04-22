@@ -1,14 +1,15 @@
 import Analytics from "analytics";
-import simpleAnalyticsPlugin from "@analytics/simple-analytics";
-import Router from "next/router";
+import googleAnalyticsPlugin from "@analytics/google-analytics";
+import { history } from "./router.js";
 
 // Initialize analytics and plugins
 // Documentation: https://getanalytics.io
 const analytics = Analytics({
   debug: process.env.NODE_ENV !== "production",
   plugins: [
-    // Instructions: https://divjoy.com/docs/simple-analytics
-    simpleAnalyticsPlugin(),
+    googleAnalyticsPlugin({
+      trackingId: process.env.REACT_APP_GA_TRACKING_ID,
+    }),
   ],
 });
 
@@ -18,7 +19,7 @@ if (typeof window !== "undefined") {
 }
 
 // Track pageview on route change
-Router.events.on("routeChangeComplete", (url) => {
+history.listen(() => {
   analytics.page();
 });
 

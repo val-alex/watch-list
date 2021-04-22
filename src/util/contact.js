@@ -1,4 +1,4 @@
-const endpoint = `https://formspree.io/${process.env.NEXT_PUBLIC_FORMSPREE_CONTACT_ID}`;
+const endpoint = `https://formspree.io/${process.env.REACT_APP_FORMSPREE_CONTACT_ID}`;
 
 function submit(data) {
   return fetch(endpoint, {

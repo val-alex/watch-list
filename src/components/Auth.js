@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/lab/Alert";
-import AuthForm from "components/AuthForm";
-import AuthSocial from "components/AuthSocial";
-import AuthFooter from "components/AuthFooter";
-import { useRouter } from "next/router";
+import AuthForm from "./AuthForm";
+import AuthSocial from "./AuthSocial";
+import AuthFooter from "./AuthFooter";
+import { useRouter } from "./../util/router.js";
 
 function Auth(props) {
   const router = useRouter();

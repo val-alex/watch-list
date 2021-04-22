@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection2 from "components/HeroSection2";
-import StatsSection from "components/StatsSection";
-import TeamBiosSection from "components/TeamBiosSection";
-import CtaSection from "components/CtaSection";
+import HeroSection2 from "./../components/HeroSection2";
+import StatsSection from "./../components/StatsSection";
+import TeamBiosSection from "./../components/TeamBiosSection";
+import CtaSection from "./../components/CtaSection";
 
 function AboutPage(props) {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import FaqSection from "components/FaqSection";
-import CtaSection from "components/CtaSection";
+import FaqSection from "./../components/FaqSection";
+import CtaSection from "./../components/CtaSection";
 
 function FaqPage(props) {
   return (

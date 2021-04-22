@@ -1,15 +1,15 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Link from "next/link";
+import { Link } from "./../util/router.js";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import useDarkMode from "use-dark-mode";
+import { useDarkMode } from "./../util/theme.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -54,10 +54,8 @@ function Footer(props) {
       <Container>
         <Grid container={true} justify="space-between" spacing={4}>
           <Grid item={true} xs={12} md={4}>
-            <Link href="/">
-              <a>
-                <img src={logo} alt="Logo" className={classes.brand} />
-              </a>
+            <Link to="/">
+              <img src={logo} alt="Logo" className={classes.brand} />
             </Link>
 
             {props.description && (
@@ -85,25 +83,23 @@ function Footer(props) {
                     </Typography>
                   </ListItem>
 
-                  <Link href="/pricing" passHref={true}>
-                    <ListItem
-                      button={true}
-                      component="a"
-                      className={classes.listItem}
-                    >
-                      <ListItemText>Pricing</ListItemText>
-                    </ListItem>
-                  </Link>
+                  <ListItem
+                    button={true}
+                    className={classes.listItem}
+                    component={Link}
+                    to="/pricing"
+                  >
+                    <ListItemText>Pricing</ListItemText>
+                  </ListItem>
 
-                  <Link href="/faq" passHref={true}>
-                    <ListItem
-                      button={true}
-                      component="a"
-                      className={classes.listItem}
-                    >
-                      <ListItemText>FAQ</ListItemText>
-                    </ListItem>
-                  </Link>
+                  <ListItem
+                    button={true}
+                    className={classes.listItem}
+                    component={Link}
+                    to="/faq"
+                  >
+                    <ListItemText>FAQ</ListItemText>
+                  </ListItem>
                 </List>
               </Grid>
               <Grid item={true} xs={12} md={4}>
@@ -117,25 +113,23 @@ function Footer(props) {
                     </Typography>
                   </ListItem>
 
-                  <Link href="/about" passHref={true}>
-                    <ListItem
-                      button={true}
-                      component="a"
-                      className={classes.listItem}
-                    >
-                      <ListItemText>About</ListItemText>
-                    </ListItem>
-                  </Link>
+                  <ListItem
+                    button={true}
+                    className={classes.listItem}
+                    component={Link}
+                    to="/about"
+                  >
+                    <ListItemText>About</ListItemText>
+                  </ListItem>
 
-                  <Link href="/contact" passHref={true}>
-                    <ListItem
-                      button={true}
-                      component="a"
-                      className={classes.listItem}
-                    >
-                      <ListItemText>Contact</ListItemText>
-                    </ListItem>
-                  </Link>
+                  <ListItem
+                    button={true}
+                    className={classes.listItem}
+                    component={Link}
+                    to="/contact"
+                  >
+                    <ListItemText>Contact</ListItemText>
+                  </ListItem>
 
                   <ListItem
                     button={true}

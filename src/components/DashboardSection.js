@@ -1,18 +1,17 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
-import SectionHeader from "components/SectionHeader";
+import SectionHeader from "./SectionHeader";
 import Box from "@material-ui/core/Box";
 import Alert from "@material-ui/lab/Alert";
 import Grid from "@material-ui/core/Grid";
-import DashboardItems from "components/DashboardItems";
+import DashboardItems from "./DashboardItems";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LinkMui from "@material-ui/core/Link";
-import Link from "next/link";
-import { useAuth } from "util/auth.js";
-import { useRouter } from "next/router";
+import { Link, useRouter } from "./../util/router.js";
+import { useAuth } from "./../util/auth.js";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -115,22 +114,18 @@ function DashboardSection(props) {
                         You can change your account info{` `}
                         {auth.user.stripeSubscriptionId && <>and plan{` `}</>}
                         in{` `}
-                        <Link href="/settings/general" passHref={true}>
-                          <LinkMui>
-                            <strong>settings</strong>
-                          </LinkMui>
-                        </Link>
+                        <LinkMui component={Link} to="/settings/general">
+                          <strong>settings</strong>
+                        </LinkMui>
                         .
                       </div>
 
                       {!auth.user.stripeSubscriptionId && (
                         <div>
                           You can signup for a plan in{" "}
-                          <Link href="/pricing" passHref={true}>
-                            <LinkMui>
-                              <strong>pricing</strong>
-                            </LinkMui>
-                          </Link>
+                          <LinkMui component={Link} to="/pricing">
+                            <strong>pricing</strong>
+                          </LinkMui>
                           .
                         </div>
                       )}

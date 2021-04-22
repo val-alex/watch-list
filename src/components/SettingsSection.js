@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Section from "components/Section";
-import ReauthModal from "components/ReauthModal";
-import SettingsNav from "components/SettingsNav";
+import Section from "./Section";
+import ReauthModal from "./ReauthModal";
+import SettingsNav from "./SettingsNav";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Alert from "@material-ui/lab/Alert";
-import SettingsGeneral from "components/SettingsGeneral";
-import SettingsPassword from "components/SettingsPassword";
-import SettingsBilling from "components/SettingsBilling";
-import { useAuth } from "util/auth.js";
+import SettingsGeneral from "./SettingsGeneral";
+import SettingsPassword from "./SettingsPassword";
+import SettingsBilling from "./SettingsBilling";
+import { useAuth } from "./../util/auth.js";
 
 function SettingsSection(props) {
   const auth = useAuth();

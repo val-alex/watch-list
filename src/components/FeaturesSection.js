@@ -1,11 +1,11 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
-import SectionHeader from "components/SectionHeader";
+import SectionHeader from "./SectionHeader";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import AspectRatio from "components/AspectRatio";
+import AspectRatio from "./AspectRatio";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { emphasize } from "@material-ui/core/styles/colorManipulator";

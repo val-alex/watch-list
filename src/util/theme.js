@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
+  useTheme,
   createMuiTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@material-ui/core/styles";
 import * as colors from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import useDarkMode from "use-dark-mode";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { createLocalStorageStateHook } from "use-local-storage-state";
 
 const themeConfig = {
   // Light theme
@@ -76,7 +78,7 @@ const themeConfig = {
       // Global styles
       MuiCssBaseline: {
         "@global": {
-          "#__next": {
+          "#root": {
             // Flex column that is height
             // of viewport so that footer
             // can push self to bottom by
@@ -112,22 +114,28 @@ function getTheme(name) {
   });
 }
 
-export const ThemeProvider = (props) => {
-  // Detect dark mode based on stored value
-  // with fallback to system setting
-  const darkMode = useDarkMode();
-  // Get MUI theme object
-  const theme = getTheme(darkMode.value ? "dark" : "light");
+// Create a local storage hook for dark mode preference
+const useDarkModeStorage = createLocalStorageStateHook("isDarkMode");
 
-  // Since Next.js server-renders we need to remove
-  // the server-side injected CSS on mount so the
-  // client can take over with managing styles.
-  useEffect(() => {
-    const jssStyles = document.querySelector("#jss-server-side");
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+export const ThemeProvider = (props) => {
+  // Get system dark mode preference
+  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)", {
+    noSsr: true,
+  });
+
+  // Get stored dark mode preference
+  let [isDarkModeStored, setIsDarkModeStored] = useDarkModeStorage();
+
+  // Use stored dark mode with fallback to system preference
+  const isDarkMode =
+    isDarkModeStored === undefined ? prefersDarkMode : isDarkModeStored;
+
+  // Get MUI theme object
+  const themeName = isDarkMode ? "dark" : "light";
+  const theme = getTheme(themeName);
+
+  // Add toggle function to theme object
+  theme.palette.toggle = () => setIsDarkModeStored((value) => !value);
 
   return (
     <MuiThemeProvider theme={theme}>
@@ -137,3 +145,14 @@ export const ThemeProvider = (props) => {
     </MuiThemeProvider>
   );
 };
+
+// Hook for detecting dark mode and toggling between light/dark
+// More convenient than reading theme.palette.type from useTheme
+export function useDarkMode() {
+  // Get current Material UI theme
+  const theme = useTheme();
+  // Check if it's the dark theme
+  const isDarkMode = theme.palette.type === "dark";
+  // Return object containing dark mode value and toggle function
+  return { value: isDarkMode, toggle: theme.palette.toggle };
+}

@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import newsletter from "util/newsletter.js";
+import newsletter from "./../util/newsletter.js";
 import { useForm } from "react-hook-form";
 
 function Newsletter(props) {

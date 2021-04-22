@@ -1,9 +1,9 @@
 import React from "react";
-import Section from "components/Section";
+import Section from "./Section";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import SectionHeader from "components/SectionHeader";
-import Newsletter from "components/Newsletter";
+import SectionHeader from "./SectionHeader";
+import Newsletter from "./Newsletter";
 
 function NewsletterSection(props) {
   return (

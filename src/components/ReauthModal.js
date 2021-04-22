@@ -8,8 +8,8 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import AuthSocial from "components/AuthSocial";
-import { useAuth } from "util/auth.js";
+import AuthSocial from "./AuthSocial";
+import { useAuth } from "./../util/auth.js";
 import { useForm } from "react-hook-form";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -73,6 +73,7 @@ function ReauthModal(props) {
                   error={errors.pass ? true : false}
                   helperText={errors.pass && errors.pass.message}
                   fullWidth={true}
+                  autoFocus={true}
                   inputRef={register({
                     required: "Please enter your password",
                   })}

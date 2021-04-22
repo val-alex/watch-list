@@ -4,7 +4,7 @@ import { getStripePriceId } from "./prices";
 
 let stripe;
 // Load the Stripe script
-loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY, {
+loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY, {
   // Pin to specific version of the Stripe API
   apiVersion: "2020-08-27",
 }).then((stripeInstance) => {
