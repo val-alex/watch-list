@@ -2,10 +2,7 @@ const firebaseAdmin = require("./_firebase");
 
 const firestore = firebaseAdmin.firestore();
 
-// Update an existing user
-function updateUser(uid, data) {
-  return firestore.collection("users").doc(uid).update(data);
-}
+/**** USERS ****/
 
 // Get user by uid
 function getUser(uid) {
@@ -20,6 +17,11 @@ function getUserByCustomerId(customerId) {
     .get()
     .then(format)
     .then((docs) => (docs ? docs[0] : null)); // Get first result
+}
+
+// Update an existing user
+function updateUser(uid, data) {
+  return firestore.collection("users").doc(uid).update(data);
 }
 
 // Update a user by their stripeCustomerId
@@ -46,8 +48,9 @@ function getDoc(doc) {
 }
 
 module.exports = {
-  updateUser,
   getUser,
   getUserByCustomerId,
+
+  updateUser,
   updateUserByCustomerId,
 };

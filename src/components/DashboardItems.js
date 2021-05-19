@@ -76,9 +76,7 @@ function DashboardItems(props) {
           alignItems="center"
           padding={2}
         >
-          <Typography className={classes.text} variant="h5">
-            Items
-          </Typography>
+          <Typography variant="h5">Items</Typography>
           <Button
             variant="contained"
             size="medium"

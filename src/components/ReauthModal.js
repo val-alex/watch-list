@@ -73,6 +73,7 @@ function ReauthModal(props) {
                   error={errors.pass ? true : false}
                   helperText={errors.pass && errors.pass.message}
                   fullWidth={true}
+                  autoFocus={true}
                   inputRef={register({
                     required: "Please enter your password",
                   })}

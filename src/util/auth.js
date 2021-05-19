@@ -11,11 +11,14 @@ import { useUser, createUser, updateUser } from "./db";
 import router from "next/router";
 import PageLoader from "./../components/PageLoader";
 import { getFriendlyPlanId } from "./prices";
+import analytics from "./analytics";
 
 // Whether to merge extra user data from database into auth.user
 const MERGE_DB_USER = true;
 // Whether to send email verification on signup
 const EMAIL_VERIFICATION = true;
+// Whether to connect analytics session to user.uid
+const ANALYTICS_IDENTIFY = true;
 
 const authContext = createContext();
 
@@ -38,6 +41,9 @@ function useAuthProvider() {
 
   // Format final user object and merge extra data from database
   const finalUser = usePrepareUser(user);
+
+  // Connect analytics session to user
+  useIdentifyUser(finalUser);
 
   // Handle response from authentication functions
   const handleAuth = async (response) => {
@@ -317,6 +323,15 @@ const allProviders = [
     providerMethod: firebase.auth.GithubAuthProvider,
   },
 ];
+
+// Connect analytics session to current user.uid
+function useIdentifyUser(user) {
+  useEffect(() => {
+    if (ANALYTICS_IDENTIFY && user) {
+      analytics.identify(user.uid);
+    }
+  }, [user]);
+}
 
 // Waits on Firebase user to be initialized before resolving promise
 // This is used to ensure auth is ready before any writing to the db can happen

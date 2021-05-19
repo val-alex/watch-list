@@ -5126,7 +5126,7 @@
                       "isVisible": true
                     }
                   ],
-                  "attributes": "{\n\tclassName: classes.text,\n  variant: \"h5\",\n}",
+                  "attributes": "{\n  variant: \"h5\",\n}",
                   "subtype": "external-instance",
                   "isVisible": true
                 },
@@ -5919,7 +5919,7 @@
                                   "type": "instance",
                                   "componentId": 522426,
                                   "id": 3393629,
-                                  "attributes": "{\n  variant: \"outlined\",\n  type: \"password\",\n  label: \"Password\",\n  name: \"pass\",\n  error: errors.pass ? true : false,\n  helperText: errors.pass && errors.pass.message,\n  fullWidth: true,\n  inputRef: register({\n    required: \"Please enter your password\",\n  }),\n}",
+                                  "attributes": "{\n  variant: \"outlined\",\n  type: \"password\",\n  label: \"Password\",\n  name: \"pass\",\n  error: errors.pass ? true : false,\n  helperText: errors.pass && errors.pass.message,\n  fullWidth: true,\n  autoFocus: true,\n  inputRef: register({\n    required: \"Please enter your password\",\n  }),\n}",
                                   "subtype": "external-instance",
                                   "isVisible": true,
                                   "children": []

@@ -1,5 +1,5 @@
 import Analytics from "analytics";
-import simpleAnalyticsPlugin from "@analytics/simple-analytics";
+import googleAnalyticsPlugin from "@analytics/google-analytics";
 import Router from "next/router";
 
 // Initialize analytics and plugins
@@ -7,8 +7,9 @@ import Router from "next/router";
 const analytics = Analytics({
   debug: process.env.NODE_ENV !== "production",
   plugins: [
-    // Instructions: https://divjoy.com/docs/simple-analytics
-    simpleAnalyticsPlugin(),
+    googleAnalyticsPlugin({
+      trackingId: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
+    }),
   ],
 });
 
